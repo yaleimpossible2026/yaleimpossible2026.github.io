@@ -1,0 +1,801 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Thinking about the Impossible — Yale Symposium, Dec 4–5, 2026</title>
+<meta name="description" content="A multidisciplinary symposium on how societies define, contest, and adjudicate the impossible. December 4–5, 2026, Humanities Quadrangle, Yale University.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,SOFT,WONK,opsz,wght@0,0,0,9..144,400;0,0,0,9..144,500;0,0,0,9..144,600;1,0,0,9..144,500&family=Source+Serif+4:ital,opsz,wght@0,12,400;0,12,500;0,12,600;1,12,400&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --parchment: #EDE8DD;
+    --parchment-deep: #E3DDCE;
+    --ink: #1C1B18;
+    --ink-soft: #4A473E;
+    --midnight: #1F2A44;
+    --midnight-deep: #161E33;
+    --brass: #A47C3B;
+    --brass-bright: #C0954C;
+    --hairline: #C4BCA9;
+    --paper-on-midnight: #E9E4D6;
+
+    --display: 'Fraunces', serif;
+    --body: 'Source Serif 4', serif;
+    --mono: 'JetBrains Mono', monospace;
+
+    --max-w: 1140px;
+  }
+
+  * { box-sizing: border-box; }
+  html { scroll-behavior: smooth; }
+
+  /* Fraunces is a variable font with a "wonk" axis that swaps in quirky
+     alternate letterforms (most noticeable on J/Q) by default in some
+     browsers. Pin it to the standard forms everywhere it's used. */
+  h1, h2, h3, .hero-title, .section-title, .day-date,
+  .speaker-card .name, .sponsor-card .name, .about-questions li {
+    font-variation-settings: "WONK" 0, "SOFT" 0;
+    font-feature-settings: "ss01" 0, "ss02" 0;
+  }
+
+
+  body {
+    margin: 0;
+    background: var(--parchment);
+    color: var(--ink);
+    font-family: var(--body);
+    font-size: 17px;
+    line-height: 1.6;
+    -webkit-font-smoothing: antialiased;
+  }
+
+  a { color: inherit; }
+  a:focus-visible, button:focus-visible { outline: 2px solid var(--brass); outline-offset: 3px; }
+
+  .wrap {
+    max-width: var(--max-w);
+    margin: 0 auto;
+    padding: 0 28px;
+  }
+
+  /* ---------- Eyebrow / labels ---------- */
+  .eyebrow {
+    font-family: var(--mono);
+    font-size: 12px;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    color: var(--brass);
+    font-weight: 600;
+  }
+  .eyebrow.on-parchment { color: #8A6A34; }
+
+  /* ---------- Signature wavering rule ---------- */
+  .wavering-rule {
+    width: 100%;
+    height: 14px;
+    display: block;
+  }
+  .wavering-rule svg { width: 100%; height: 100%; display: block; }
+
+  /* ---------- Nav ---------- */
+  header.site-nav {
+    position: sticky;
+    top: 0;
+    z-index: 40;
+    background: rgba(237, 232, 221, 0.92);
+    backdrop-filter: blur(6px);
+    border-bottom: 1px solid var(--hairline);
+  }
+  .nav-inner {
+    max-width: var(--max-w);
+    margin: 0 auto;
+    padding: 16px 28px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 16px;
+  }
+  .nav-mark {
+    font-family: var(--mono);
+    font-size: 12px;
+    letter-spacing: 0.06em;
+    text-decoration: none;
+    color: var(--ink);
+    font-weight: 600;
+    white-space: nowrap;
+  }
+  .nav-mark span { color: var(--brass); }
+  nav.nav-links {
+    display: flex;
+    gap: 28px;
+    font-family: var(--mono);
+    font-size: 12.5px;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+  }
+  nav.nav-links a { text-decoration: none; color: var(--ink-soft); transition: color .15s ease; }
+  nav.nav-links a:hover { color: var(--brass); }
+  .nav-toggle { display: none; }
+
+  @media (max-width: 720px) {
+    nav.nav-links { display: none; }
+  }
+
+  /* ---------- Hero ---------- */
+  .hero {
+    padding: 96px 0 56px;
+    position: relative;
+  }
+  .hero .eyebrow { margin-bottom: 22px; }
+  h1.hero-title {
+    font-family: var(--display);
+    font-optical-sizing: auto;
+    font-weight: 500;
+    font-size: clamp(2.6rem, 6.4vw, 5.1rem);
+    line-height: 1.02;
+    letter-spacing: -0.01em;
+    margin: 0 0 28px;
+    max-width: 15ch;
+  }
+  h1.hero-title em {
+    font-style: normal;
+    font-weight: 500;
+    color: var(--midnight);
+  }
+  h1.hero-title .hero-title-accent {
+    color: var(--brass);
+  }
+  .hero-meta {
+    font-family: var(--mono);
+    font-size: 14.5px;
+    color: var(--ink-soft);
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px 28px;
+    margin-bottom: 34px;
+  }
+  .hero-meta strong { color: var(--ink); font-weight: 600; }
+  .hero-tagline {
+    max-width: 56ch;
+    font-size: 1.18rem;
+    line-height: 1.55;
+    color: var(--ink-soft);
+    margin: 0 0 40px;
+  }
+  .hero-actions { display: flex; flex-wrap: wrap; gap: 14px; margin-bottom: 48px; }
+
+  .btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    padding: 13px 24px;
+    font-family: var(--mono);
+    font-size: 12.5px;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    text-decoration: none;
+    border-radius: 2px;
+    transition: transform .15s ease, background .15s ease, color .15s ease, border-color .15s ease;
+  }
+  .btn-primary {
+    background: var(--midnight);
+    color: var(--paper-on-midnight);
+    border: 1px solid var(--midnight);
+  }
+  .btn-primary:hover { background: var(--midnight-deep); transform: translateY(-1px); }
+  .btn-ghost {
+    background: transparent;
+    color: var(--ink);
+    border: 1px solid var(--ink);
+  }
+  .btn-ghost:hover { border-color: var(--brass); color: var(--brass); transform: translateY(-1px); }
+
+  /* ---------- Section scaffolding ---------- */
+  section { padding: 76px 0; }
+  section.on-midnight { background: var(--midnight); color: var(--paper-on-midnight); }
+  section.on-midnight .eyebrow { color: var(--brass-bright); }
+
+  .section-head { max-width: 62ch; margin-bottom: 44px; }
+  .section-head .eyebrow { margin-bottom: 14px; }
+  h2.section-title {
+    font-family: var(--display);
+    font-weight: 500;
+    font-size: clamp(1.7rem, 3.4vw, 2.5rem);
+    letter-spacing: -0.01em;
+    margin: 0 0 14px;
+  }
+  .section-head p { color: var(--ink-soft); margin: 0; font-size: 1.05rem; }
+  section.on-midnight .section-head p { color: #B9C0D2; }
+
+  /* ---------- About ---------- */
+  .about-grid {
+    display: grid;
+    grid-template-columns: 1.35fr 1fr;
+    gap: 56px;
+    align-items: start;
+  }
+  .about-body p { margin: 0 0 20px; font-size: 1.05rem; }
+  .about-body p:last-child { margin-bottom: 0; }
+
+  .about-questions {
+    background: var(--parchment-deep);
+    border: 1px solid var(--hairline);
+    border-left: 3px solid var(--brass);
+    padding: 30px 28px;
+  }
+  .about-questions .eyebrow { display: block; margin-bottom: 16px; }
+  .about-questions ul { margin: 0; padding: 0; list-style: none; }
+  .about-questions li {
+    font-family: var(--display);
+    font-weight: 500;
+    font-size: 1.06rem;
+    line-height: 1.5;
+    padding: 14px 0;
+    border-top: 1px solid var(--hairline);
+  }
+  .about-questions li:first-child { border-top: none; padding-top: 0; }
+
+  @media (max-width: 860px) {
+    .about-grid { grid-template-columns: 1fr; }
+  }
+
+  /* ---------- Sponsor logos ---------- */
+  .sponsor-logos {
+    display: flex;
+    align-items: center;
+    gap: 64px;
+    flex-wrap: wrap;
+    margin-bottom: 40px;
+  }
+  .sponsor-logo-card {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 10px;
+  }
+  .sponsor-logo {
+    display: block;
+    height: auto;
+  }
+  .sponsor-logo.whc { width: 320px; max-width: 60vw; }
+  .sponsor-logo.ccs { width: 190px; max-width: 44vw; }
+  .sponsor-logo.suaps { width: 225px; max-width: 48vw; }
+  .sponsor-logo-link { display: inline-block; }
+  .sponsor-logo-caption {
+    font-family: var(--mono);
+    font-size: 11.5px;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+    text-decoration: none;
+    color: var(--brass);
+  }
+  .sponsor-logo-caption:hover { color: var(--ink); }
+  .sponsor-departments {
+    font-family: var(--mono);
+    font-size: 12px;
+    letter-spacing: 0.03em;
+    color: var(--ink-soft);
+    padding-top: 24px;
+    border-top: 1px solid var(--hairline);
+  }
+  @media (max-width: 640px) {
+    .sponsor-logos { gap: 40px; }
+  }
+
+  /* ---------- Sponsors (faculty) ---------- */
+  .sponsor-list {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 1px;
+    background: var(--hairline);
+    border: 1px solid var(--hairline);
+  }
+  .sponsor-card {
+    background: var(--parchment);
+    padding: 28px 26px;
+  }
+  .sponsor-card .name {
+    font-family: var(--display);
+    font-weight: 500;
+    font-size: 1.2rem;
+    margin-bottom: 6px;
+  }
+  .sponsor-card .title {
+    font-size: 0.94rem;
+    color: var(--ink-soft);
+  }
+  @media (max-width: 640px) {
+    .sponsor-list { grid-template-columns: 1fr; }
+  }
+
+  /* ---------- Speakers ---------- */
+  .speaker-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 1px;
+    background: var(--hairline);
+    border: 1px solid var(--hairline);
+  }
+  .speaker-card {
+    background: var(--parchment);
+    padding: 30px 26px;
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+    min-height: 190px;
+  }
+  .speaker-card .name {
+    font-family: var(--display);
+    font-weight: 500;
+    font-size: 1.22rem;
+    line-height: 1.2;
+  }
+  .speaker-card .focus {
+    font-size: 0.93rem;
+    color: var(--ink-soft);
+    line-height: 1.5;
+    flex-grow: 1;
+  }
+  .speaker-card .focus em { font-style: italic; font-weight: 400; color: var(--ink); }
+  .speaker-card .site-link {
+    margin-top: auto;
+    font-family: var(--mono);
+    font-size: 11.5px;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+    text-decoration: none;
+    color: var(--brass);
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    padding-top: 8px;
+  }
+  .speaker-card .site-link:hover { color: var(--ink); }
+  .speaker-card .site-link::after { content: "→"; transition: transform .15s ease; }
+  .speaker-card .site-link:hover::after { transform: translateX(3px); }
+
+  .speaker-card-featured {
+    background: #DDD5C0;
+  }
+  .speaker-card-featured .name { color: var(--ink); }
+  .speaker-card-featured .focus { color: var(--ink-soft); }
+  .speaker-card-featured .focus em { font-style: italic; font-weight: 400; color: var(--brass); }
+  .speaker-card-featured .site-link { color: var(--brass); }
+  .speaker-card-featured .site-link:hover { color: var(--ink); }
+  .remote-note {
+    font-family: var(--mono);
+    font-size: 10.5px;
+    letter-spacing: 0.04em;
+    text-transform: uppercase;
+    color: #8A6A34;
+    border: 1px solid rgba(164, 124, 59, 0.4);
+    padding: 5px 10px;
+    display: inline-block;
+    width: fit-content;
+  }
+
+  @media (max-width: 900px) {
+    .speaker-grid { grid-template-columns: repeat(2, 1fr); }
+  }
+  @media (max-width: 600px) {
+    .speaker-grid { grid-template-columns: 1fr; }
+  }
+
+  /* ---------- Schedule ---------- */
+  .schedule-days {
+    display: flex;
+    gap: 64px;
+    flex-wrap: wrap;
+    padding: 8px 0 4px;
+    border-top: 1px solid var(--hairline);
+  }
+  .schedule-day {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    padding-top: 28px;
+  }
+  .schedule-day .day-label {
+    font-family: var(--mono);
+    font-size: 12px;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: var(--brass);
+  }
+  .schedule-day .day-date {
+    font-family: var(--display);
+    font-size: 1.6rem;
+    font-weight: 500;
+  }
+
+  .schedule-note {
+    margin-top: 36px;
+    font-family: var(--mono);
+    font-size: 12.5px;
+    color: var(--ink-soft);
+    letter-spacing: 0.02em;
+  }
+
+  /* ---------- Attend ---------- */
+  .attend-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 1px;
+    background: rgba(233, 228, 214, 0.15);
+    border: 1px solid rgba(233, 228, 214, 0.15);
+  }
+  .attend-card {
+    background: var(--midnight);
+    padding: 30px 26px;
+  }
+  .attend-card .attend-label {
+    font-family: var(--mono);
+    font-size: 11.5px;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: var(--brass-bright);
+    margin-bottom: 12px;
+    display: block;
+  }
+  .attend-card h3 {
+    font-family: var(--display);
+    font-weight: 500;
+    font-size: 1.2rem;
+    margin: 0 0 12px;
+  }
+  .attend-card p { font-size: 0.95rem; color: #C6CCDA; margin: 0 0 16px; }
+  .attend-card p:last-of-type { margin-bottom: 0; }
+  .attend-card a.inline-link {
+    color: var(--brass-bright);
+    text-decoration: none;
+    border-bottom: 1px solid rgba(192, 149, 76, 0.4);
+  }
+  .attend-card a.inline-link:hover { border-color: var(--brass-bright); }
+
+  @media (max-width: 860px) {
+    .attend-grid { grid-template-columns: 1fr; }
+  }
+
+  /* ---------- Footer ---------- */
+  footer {
+    padding: 48px 0 56px;
+    border-top: 1px solid var(--hairline);
+  }
+  .footer-inner {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-end;
+    flex-wrap: wrap;
+    gap: 24px;
+  }
+  .footer-credit {
+    font-family: var(--mono);
+    font-size: 12px;
+    color: var(--ink-soft);
+    line-height: 1.7;
+  }
+  .footer-credit strong { color: var(--ink); }
+  .footer-sponsors {
+    font-family: var(--mono);
+    font-size: 11.5px;
+    color: var(--ink-soft);
+    text-align: right;
+    line-height: 1.9;
+  }
+  @media (max-width: 640px) {
+    .footer-inner { flex-direction: column; align-items: flex-start; }
+    .footer-sponsors { text-align: left; }
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    * { transition: none !important; scroll-behavior: auto !important; }
+  }
+</style>
+</head>
+<body>
+
+<header class="site-nav">
+  <div class="nav-inner">
+    <a class="nav-mark" href="#top">THINKING ABOUT <span>THE IMPOSSIBLE</span></a>
+    <nav class="nav-links">
+      <a href="#about">About</a>
+      <a href="#sponsor">Sponsors</a>
+      <a href="#sponsors">Convened by</a>
+      <a href="#speakers">Speakers</a>
+      <a href="#schedule">Schedule</a>
+      <a href="#attend">Want to Attend?</a>
+    </nav>
+  </div>
+</header>
+
+<main id="top">
+
+  <!-- HERO -->
+  <div class="hero">
+    <div class="wrap">
+      <div class="eyebrow on-parchment">A Yale Symposium</div>
+      <h1 class="hero-title">Thinking about the Impossible</h1>
+      <div class="hero-meta">
+        <span><strong>December 4–5, 2026</strong></span>
+        <span>Humanities Quadrangle, Yale University</span>
+        <span>New Haven, CT</span>
+      </div>
+      <p class="hero-tagline">Miracles, apparitions, anomalous observations, and unexplained experiences — phenomena that resist prevailing explanatory frameworks — have long served as testing grounds for how we know what we know. A two-day interdisciplinary symposium on how societies define, contest, and adjudicate the boundaries of the real.</p>
+      <div class="hero-actions">
+        <a class="btn btn-primary" href="https://forms.gle/yt1NnpDnkh7Yyb2R9" target="_blank" rel="noopener">I'm Interested</a>
+        <a class="btn btn-ghost" href="#speakers">View Speakers</a>
+      </div>
+    </div>
+    <div class="wavering-rule" aria-hidden="true">
+      <svg viewBox="0 0 1200 14" preserveAspectRatio="none">
+        <path d="M0,7 C 30,1 60,13 90,7 C 120,1 150,13 180,7 C 210,1 240,13 270,7 C 300,1 330,13 360,7 C 390,1 420,13 450,7 C 480,1 510,13 540,7 C 570,1 600,13 630,7 C 660,1 690,13 720,7 C 750,1 780,13 810,7 C 840,1 870,13 900,7 C 930,1 960,13 990,7 C 1020,1 1050,13 1080,7 C 1110,1 1140,13 1170,7 C 1185,4 1195,10 1200,7"
+              fill="none" stroke="#A47C3B" stroke-width="1.4" />
+      </svg>
+    </div>
+  </div>
+
+  <!-- ABOUT -->
+  <section id="about">
+    <div class="wrap">
+      <div class="section-head">
+        <div class="eyebrow on-parchment">About the Symposium</div>
+        <h2 class="section-title">Where the impossible is made, unmade, and governed</h2>
+      </div>
+      <div class="about-grid">
+        <div class="about-body">
+          <p>This symposium brings together leading scholars from the humanities and social sciences, alongside scientific, legal, and policy perspectives, to situate today's debates about anomalous experience within much longer traditions of interpreting extraordinary events.</p>
+          <p>Claims of impossibility function as stress tests: they push social and cultural systems, and the knowledge bases underlying them, to their limits. Historically, religious authorities built formal procedures to evaluate miraculous claims; scientific bodies developed protocols for distinguishing anomaly from error; legal systems continue to wrestle with admissible evidence when events resist ordinary explanation. Recent waves of unidentified aerial incursions — closing airports, prompting official investigation — are only the latest chapter.</p>
+          <p>Rather than adjudicating any particular claim, the symposium asks how institutions and societies negotiate uncertainty, authority, and evidence — from early modern ecclesiastical tribunals to contemporary legislative hearings — and what that negotiation reveals about power, credibility, and the structures of myth and narrative that hold a culture together.</p>
+        </div>
+        <div class="about-questions">
+          <span class="eyebrow on-parchment">Questions we're asking</span>
+          <ul>
+            <li>What role have anomalies played in pushing science forward?</li>
+            <li>Who draws the boundary between legitimate and problematic knowledge claims?</li>
+            <li>What makes for a paradigm case of the impossible — and which are seen as flawed?</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- SPONSOR -->
+  <section id="sponsor" style="background: var(--parchment-deep); border-top: 1px solid var(--hairline); border-bottom: 1px solid var(--hairline);">
+    <div class="wrap">
+      <div class="section-head">
+        <div class="eyebrow on-parchment">Support</div>
+        <h2 class="section-title">Sponsors</h2>
+        <p>Thinking about the Impossible is made possible by the following supporters.</p>
+      </div>
+
+      <div class="sponsor-logos">
+        <div class="sponsor-logo-card">
+          <img src="images/whc_logo.png" alt="Whitney Humanities Center" class="sponsor-logo whc">
+          <a href="https://whc.yale.edu/" target="_blank" rel="noopener" class="sponsor-logo-caption">whc.yale.edu →</a>
+        </div>
+        <div class="sponsor-logo-card">
+          <a href="https://ccs.yale.edu/" target="_blank" rel="noopener" class="sponsor-logo-link">
+            <img src="images/ccs_logo.svg" alt="Center for Cultural Sociology at Yale University" class="sponsor-logo ccs">
+          </a>
+          <a href="https://ccs.yale.edu/" target="_blank" rel="noopener" class="sponsor-logo-caption">ccs.yale.edu →</a>
+        </div>
+      </div>
+
+      <div class="sponsor-departments">
+        With additional support from the Department of History, Yale University.
+      </div>
+      <div class="sponsor-departments" style="margin-top: 12px; padding-top: 0; border-top: none;">
+        Interested in sponsoring the symposium? <a href="#contact" style="color: var(--brass); text-decoration: none; border-bottom: 1px solid rgba(164, 124, 59, 0.4);">Get in touch →</a>
+      </div>
+
+      <div class="sponsor-logos" style="margin-top: 36px;">
+        <div class="sponsor-logo-card">
+          <a href="https://www.societyforuapstudies.org/" target="_blank" rel="noopener" class="sponsor-logo-link">
+            <img src="images/suaps_logo.png" alt="Society for UAP Studies" class="sponsor-logo suaps">
+          </a>
+          <a href="https://www.societyforuapstudies.org/" target="_blank" rel="noopener" class="sponsor-logo-caption">societyforuapstudies.org →</a>
+        </div>
+      </div>
+      <div class="sponsor-departments" style="margin-top: 12px; padding-top: 0; border-top: none;">
+        Stay tuned for details regarding participation from the Society for UAP Studies.
+      </div>
+    </div>
+  </section>
+
+  <!-- SPONSORS -->
+  <section id="sponsors" style="background: var(--parchment-deep); border-top: 1px solid var(--hairline); border-bottom: 1px solid var(--hairline);">
+    <div class="wrap">
+      <div class="section-head">
+        <div class="eyebrow on-parchment">Faculty Sponsors</div>
+        <h2 class="section-title">Convened by</h2>
+      </div>
+      <div class="sponsor-list">
+        <div class="sponsor-card">
+          <div class="name">Carlos Eire</div>
+          <div class="title">T. Lawrason Riggs Professor of History and Religious Studies, Yale</div>
+        </div>
+        <div class="sponsor-card">
+          <div class="name">Ivano Dal Prete</div>
+          <div class="title">Senior Lecturer, History and History of Science, Medicine &amp; Public Health, Yale</div>
+        </div>
+        <div class="sponsor-card">
+          <div class="name">Philip Smith</div>
+          <div class="title">Professor of Sociology; Director, Center for Cultural Sociology, Yale</div>
+        </div>
+        <div class="sponsor-card">
+          <div class="name">Etienne Caron</div>
+          <div class="title">Assistant Professor of Immunobiology, Yale</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- SPEAKERS -->
+  <section id="speakers">
+    <div class="wrap">
+      <div class="section-head">
+        <div class="eyebrow on-parchment">Participants</div>
+        <h2 class="section-title">Speakers</h2>
+        <p>Scholars joining from subjects including: religious studies, history, sociology, anthropology.</p>
+      </div>
+      <div class="speaker-grid">
+
+        <div class="speaker-card speaker-card-featured">
+          <div class="name">Jeffrey J. Kripal</div>
+          <div class="focus">Rice University. Author of <em>Authors of the Impossible</em>; Founder, Center for the Impossible.</div>
+          <div class="remote-note">Remote participation details being finalized</div>
+          <a class="site-link" href="https://jeffreyjkripal.com/" target="_blank" rel="noopener">Academic site</a>
+        </div>
+        
+        <div class="speaker-card">
+          <div class="name">Diana Walsh Pasulka</div>
+          <div class="focus">Author of <em>American Cosmic</em> and New York Times Bestseller--<em>The Others</em>, on religion, technology, and emerging belief. Professor of Religious Studies, UNC Wilmington.</div>
+          <a class="site-link" href="https://dwpasulka.com/" target="_blank" rel="noopener">Academic site</a>
+        </div>
+
+        <div class="speaker-card">
+          <div class="name">Bradford Bouley</div>
+          <div class="focus">Sanctity, anatomy, medicine, and Catholic evidentiary procedures in early modern Italy. Associate Professor of History, UC Santa Barbara.</div>
+          <a class="site-link" href="https://www.history.ucsb.edu/faculty/bouley/" target="_blank" rel="noopener">Faculty page</a>
+        </div>
+
+        <div class="speaker-card">
+          <div class="name">Dmitry Kurakin</div>
+          <div class="focus">Cultural sociology, mystery, and the mechanisms of meaning-making. University of Virginia; founder, Moscow Centre for Cultural Sociology.</div>
+          <a class="site-link" href="https://dmitrykurakin.org/" target="_blank" rel="noopener">Academic site</a>
+        </div>
+
+        <div class="speaker-card">
+          <div class="name">Jamie Lewis</div>
+          <div class="focus">Bigfoot research and the borderlands of legitimate science. Reader in Sociology, Cardiff University.</div>
+          <a class="site-link" href="https://profiles.cardiff.ac.uk/staff/lewisjt1" target="_blank" rel="noopener">Faculty page</a>
+        </div>
+
+        <div class="speaker-card">
+          <div class="name">Susan Lepselter</div>
+          <div class="focus">UFO narratives, conspiracy, and the American uncanny. Associate Professor of American Studies, Indiana University.</div>
+          <a class="site-link" href="https://americanstudies.indiana.edu/about/faculty/lepselter-susan.html" target="_blank" rel="noopener">Faculty page</a>
+        </div>
+
+        <div class="speaker-card">
+          <div class="name">Diana Espírito Santo</div>
+          <div class="focus">Cuban and Brazilian spirit mediumship, and the ufological "absurd" in contemporary Chile. Associate Professor of Anthropology, Pontificia Universidad Católica de Chile.</div>
+          <a class="site-link" href="https://antropologia.uc.cl/la-escuela/academicos/diana-espirito-santo/" target="_blank" rel="noopener">Faculty page</a>
+        </div>
+
+        <div class="speaker-card">
+          <div class="name">Greg Eghigian</div>
+          <div class="focus">Global history of the UFO and alien-contact phenomenon. Professor of History, Penn State.</div>
+          <a class="site-link" href="https://history.la.psu.edu/directory/greg-eghigian/" target="_blank" rel="noopener">Faculty page</a>
+        </div>
+
+        <div class="speaker-card">
+          <div class="name">Matthew Bowman</div>
+          <div class="focus">The Betty & Barney Hill case, American religion, and UFO belief and experience. Professor of Religion and History and Howard W. Hunter Chair of Mormon Studies, Claremont Graduate University.</div>
+          <a class="site-link" href="https://www.cgu.edu/people/matthew-bowman/" target="_blank" rel="noopener">Faculty page</a>
+        </div>
+
+        <div class="speaker-card">
+          <div class="name">Hannah Marcus</div>
+          <div class="focus">Forbidden knowledge, censorship, and early modern Italy. Professor of the History of Science, Harvard University.</div>
+          <a class="site-link" href="https://histsci.fas.harvard.edu/people/hannah-marcus" target="_blank" rel="noopener">Faculty page</a>
+        </div>
+
+        <div class="speaker-card">
+          <div class="name">Marina Weiler</div>
+          <div class="focus">Mediumship, out-of-body experiences, and remote viewing. Assistant Professor of Psychiatry &amp; Neurobehavioral Sciences, University of Virginia.</div>
+          <a class="site-link" href="https://med.virginia.edu/perceptual-studies/dops-staff/marina-weiler/" target="_blank" rel="noopener">Faculty page</a>
+        </div>
+
+        <div class="speaker-card">
+          <div class="name">Stephen C. Finley</div>
+          <div class="focus">Nation of Islam, Black religious thought, and embodiment. Inaugural Chair, Department of African &amp; African American Studies, LSU.</div>
+          <a class="site-link" href="https://www.lsu.edu/hss/aaas/faculty/finley.php" target="_blank" rel="noopener">Faculty page</a>
+        </div>
+
+        <div class="speaker-card">
+          <div class="name">Peter Skafish</div>
+          <div class="focus">Anthropology, cosmology, pluralism, and the problem of nonhuman intelligence. Sociocultural anthropologist. Co-Founder & Executive Director, Sol Foundation.</div>
+          <a class="site-link" href="https://thesolfoundation.org/people/peter-skafish-2/" target="_blank" rel="noopener">Academic site</a>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- SCHEDULE -->
+  <section id="schedule" style="background: var(--parchment-deep); border-top: 1px solid var(--hairline); border-bottom: 1px solid var(--hairline);">
+    <div class="wrap">
+      <div class="section-head">
+        <div class="eyebrow on-parchment">Program</div>
+        <h2 class="section-title">Schedule</h2>
+        <p>The full agenda is being finalized. Session times and titles will be posted here as they're confirmed.</p>
+      </div>
+      <div class="schedule-days">
+        <div class="schedule-day">
+          <span class="day-label">Day One</span>
+          <span class="day-date">Friday, December 4</span>
+        </div>
+        <div class="schedule-day">
+          <span class="day-label">Day Two</span>
+          <span class="day-date">Saturday, December 5</span>
+        </div>
+      </div>
+      <div class="schedule-note">Check back for updates, or contact us below to be notified when the program is posted.</div>
+    </div>
+  </section>
+
+  <!-- ATTEND -->
+  <section id="attend" class="on-midnight">
+    <div class="wrap">
+      <div class="section-head">
+        <div class="eyebrow">Want to Attend?</div>
+        <h2 class="section-title">Join us</h2>
+      </div>
+      <div class="attend-grid">
+        <div class="attend-card">
+          <span class="attend-label">Interest Form</span>
+          <h3>Let us know you'd like to join. Sign up for updates.</h3>
+          <p>We're aiming to convene a diverse group of thinkers, but attendance will be limited by space, and we'll prioritize scholars, students, archivists, and researchers. Submitting the form isn't a confirmed spot — it puts you on our list so we can do our best to include you.</p>
+          <p>We'll follow up 6–10 weeks out with more specific registration details, once we have a clearer sense of demand.</p>
+          <a class="inline-link" href="https://forms.gle/yt1NnpDnkh7Yyb2R9" target="_blank" rel="noopener" id="rsvp-link">I'm Interested →</a>
+        </div>
+        <div class="attend-card">
+          <span class="attend-label">Recordings</span>
+          <h3>Watch later or remotely</h3>
+          <p>Select sessions will be recorded and made available online, pending speakers' permission. We're also exploring livestreaming — sign up via the interest form above if you'd like that option.</p>
+        </div>
+        <div class="attend-card" id="contact">
+          <span class="attend-label">Questions</span>
+          <h3>Get in touch</h3>
+          <p>For accessibility requests, press inquiries, sponsorship inquiries, or general questions:</p>
+          <a class="inline-link" href="mailto:impossible2026@yale.edu">impossible2026@yale.edu</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+</main>
+
+<footer>
+  <div class="wrap footer-inner">
+    <div class="footer-credit">
+      <strong>Thinking about the Impossible</strong><br>
+      A multidisciplinary symposium funded by the Whitney Humanities Center, Yale University.<br>
+      December 4–5, 2026 · Humanities Quadrangle · New Haven, CT<br>
+      Contact: <a href="mailto:impossible2026@yale.edu" style="color: inherit;">impossible2026@yale.edu</a>
+    </div>
+    <div class="footer-sponsors">
+      Carlos Eire<br>
+      Ivano Dal Prete<br>
+      Philip Smith<br>
+      Etienne Caron<br>
+      Sri Tata
+    </div>
+  </div>
+</footer>
+
+</body>
+</html>
