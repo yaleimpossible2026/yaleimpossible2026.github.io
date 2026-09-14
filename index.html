@@ -410,6 +410,63 @@
     font-weight: 500;
   }
 
+  .schedule-day .day-time {
+    font-family: var(--mono);
+    font-size: 12.5px;
+    color: var(--ink-soft);
+    letter-spacing: 0.02em;
+  }
+
+  .schedule-prequel {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    padding: 22px 26px;
+    margin-bottom: 36px;
+    background: var(--parchment);
+    border: 1px solid var(--hairline);
+    border-left: 3px solid var(--brass);
+  }
+  .schedule-prequel .day-label {
+    font-family: var(--mono);
+    font-size: 12px;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: var(--brass);
+  }
+  .schedule-prequel .day-date {
+    font-family: var(--display);
+    font-size: 1.6rem;
+    font-weight: 500;
+  }
+  .schedule-prequel .prequel-detail {
+    font-family: var(--mono);
+    font-size: 12.5px;
+    color: var(--ink-soft);
+    letter-spacing: 0.02em;
+  }
+  .schedule-prequel .prequel-desc {
+    max-width: 62ch;
+    margin: 4px 0 0;
+  }
+  .schedule-prequel .prequel-note {
+    max-width: 62ch;
+    margin: 14px 0 0;
+    padding-top: 14px;
+    border-top: 1px solid var(--hairline);
+    font-size: 0.92rem;
+    font-style: italic;
+    color: var(--ink-soft);
+  }
+  .schedule-prequel a {
+    color: inherit;
+    text-decoration: underline;
+    text-decoration-color: var(--brass);
+    text-underline-offset: 3px;
+    transition: color .15s ease;
+  }
+  .schedule-prequel a:hover { color: var(--brass); }
+
   .schedule-note {
     margin-top: 36px;
     font-family: var(--mono);
@@ -733,14 +790,23 @@
         <h2 class="section-title">Schedule</h2>
         <p>The full agenda is being finalized. Session times and titles will be posted here as they're confirmed.</p>
       </div>
+      <div class="schedule-prequel">
+        <span class="day-label">Prequel Talk</span>
+        <span class="day-date">Wednesday, November 18</span>
+        <span class="prequel-detail">2:00pm ET / 1:00pm CT · Zoom talk, with refreshments served on campus</span>
+        <p class="prequel-desc">Jeff Kripal joins us remotely to set the stage on how to think impossibly, along the lines of his recent book <a href="https://press.uchicago.edu/ucp/books/book/chicago/H/bo216049049.html" target="_blank" rel="noopener"><em>How to Think Impossibly</em></a>. Refreshments will be served for those attending in person; details to follow.</p>
+        <p class="prequel-note">A note on the name: the modern usage of the term largely stems from Kripal's seminal <a href="https://press.uchicago.edu/ucp/books/book/chicago/A/bo8490174.html" target="_blank" rel="noopener"><em>Authors of the Impossible</em></a>. The symposium was very nearly “History of the Impossible,” after Carlos Eire's <a href="https://yalebooks.yale.edu/book/9780300274516/they-flew/" target="_blank" rel="noopener"><em>They Flew: A History of the Impossible</em></a>. Phil Smith, joining from Sociology, suggested broadening the scope to “Thinking about…” — and only months later did it dawn on us that we had landed on a permutation of Kripal's more recent book.</p>
+      </div>
       <div class="schedule-days">
         <div class="schedule-day">
           <span class="day-label">Day One</span>
           <span class="day-date">Friday, December 4</span>
+          <span class="day-time">Roughly 9:00am – 5:00pm</span>
         </div>
         <div class="schedule-day">
           <span class="day-label">Day Two</span>
           <span class="day-date">Saturday, December 5</span>
+          <span class="day-time">Roughly 9:00am – 5:00pm</span>
         </div>
       </div>
       <div class="schedule-note">Check back for updates, or contact us below to be notified when the program is posted.</div>
