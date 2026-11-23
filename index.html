@@ -881,6 +881,106 @@
     .attend-grid { grid-template-columns: 1fr; }
   }
 
+  /* ---------- Travel & Lodging (collapsible) ---------- */
+  details.lodging {
+    background: var(--parchment);
+    border: 1px solid var(--hairline);
+    border-left: 3px solid var(--brass);
+  }
+  details.lodging > summary {
+    list-style: none;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 20px;
+    padding: 22px 26px;
+    transition: background .15s ease;
+  }
+  details.lodging > summary::-webkit-details-marker { display: none; }
+  details.lodging > summary:hover { background: rgba(164, 124, 59, 0.08); }
+  details.lodging[open] > summary { border-bottom: 1px solid var(--hairline); background: rgba(164, 124, 59, 0.07); }
+  details.lodging .lodging-title {
+    font-family: var(--display);
+    font-weight: 500;
+    font-size: 1.4rem;
+    font-variation-settings: "WONK" 0, "SOFT" 0;
+  }
+  details.lodging .lodging-sub {
+    display: block;
+    margin-top: 4px;
+    font-family: var(--mono);
+    font-size: 12px;
+    letter-spacing: 0.04em;
+    color: var(--ink-soft);
+  }
+  details.lodging .chev {
+    flex-shrink: 0;
+    width: 10px; height: 10px;
+    border-right: 2px solid var(--brass);
+    border-bottom: 2px solid var(--brass);
+    transform: rotate(45deg);
+    transition: transform .2s ease;
+  }
+  details.lodging[open] > summary .chev { transform: rotate(-135deg); }
+  .lodging-body { padding: 8px 26px 30px; }
+  .lodging-body p { margin: 16px 0 0; font-size: 0.98rem; color: var(--ink-soft); max-width: 72ch; }
+  .lodging-body a { color: var(--brass); text-decoration: none; border-bottom: 1px solid rgba(164, 124, 59, 0.4); }
+  .lodging-body a:hover { color: var(--ink); }
+  .lodging-group {
+    margin: 30px 0 10px;
+    font-family: var(--mono);
+    font-size: 11.5px;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: #8A6A34;
+    font-weight: 600;
+  }
+  @media (max-width: 560px) {
+    details.lodging > summary, .lodging-body { padding-left: 18px; padding-right: 18px; }
+  }
+
+  .simple-list { list-style: none; margin: 0; padding: 0; columns: 2; column-gap: 40px; }
+  .simple-list li { break-inside: avoid; padding: 9px 0; border-top: 1px solid var(--hairline); font-size: 1rem; }
+  @media (max-width: 560px) { .simple-list { columns: 1; } }
+
+  details.sub { border-top: 1px solid var(--hairline); }
+  details.sub:last-of-type { border-bottom: 1px solid var(--hairline); }
+  .lodging-group + p + details.sub, .lodging-body > p:first-child + details.sub { margin-top: 18px; }
+  details.sub > summary {
+    list-style: none; cursor: pointer;
+    display: grid; grid-template-columns: minmax(0, 1fr) auto 14px;
+    align-items: center; gap: 4px 20px;
+    padding: 14px 10px; transition: background .15s ease;
+  }
+  details.sub > summary::-webkit-details-marker { display: none; }
+  details.sub > summary:hover, details.sub[open] > summary { background: rgba(164, 124, 59, 0.07); }
+  details.sub .sub-title { font-family: var(--display); font-weight: 500; font-size: 1.12rem; font-variation-settings: "WONK" 0, "SOFT" 0; }
+  details.sub .sub-meta { font-family: var(--mono); font-size: 12px; color: var(--ink-soft); }
+  details.sub .chev { width: 8px; height: 8px; }
+  details.sub[open] > summary .chev { transform: rotate(-135deg); }
+  .sub-body { padding: 4px 10px 22px; }
+  .sub-body > p:first-child { margin-top: 8px; }
+  .sub-body h5 { margin: 18px 0 4px; font-family: var(--mono); font-size: 11.5px; letter-spacing: 0.06em; text-transform: uppercase; color: #8A6A34; font-weight: 600; }
+  .sub-body ul:not(.simple-list) { margin: 4px 0 0; padding-left: 20px; max-width: 72ch; font-size: 0.96rem; color: var(--ink-soft); }
+  .sub-body ul:not(.simple-list) li { margin: 5px 0; }
+  @media (max-width: 640px) {
+    details.sub > summary { grid-template-columns: minmax(0, 1fr) 14px; }
+    details.sub .sub-meta { grid-column: 1; grid-row: 2; }
+    details.sub .chev { grid-column: 2; grid-row: 1 / span 2; }
+  }
+
+  .union-head {
+    margin: 48px 0 6px;
+    font-family: var(--display); font-weight: 500;
+    font-size: clamp(1.5rem, 3vw, 2rem); line-height: 1.15; letter-spacing: -0.01em;
+    color: var(--midnight);
+    font-variation-settings: "WONK" 0, "SOFT" 0;
+  }
+  .union-head.first { margin-top: 30px; }
+  .union-eyebrow { display: block; margin-bottom: 8px; font-family: var(--mono); font-size: 11.5px; letter-spacing: 0.1em; text-transform: uppercase; color: #8A6A34; font-weight: 600; }
+  .lodging-body p.union-lede { margin: 0 0 18px; font-size: 1.05rem; color: var(--ink); }
+
   /* ---------- Footer ---------- */
   footer {
     padding: 48px 0 56px;
@@ -930,6 +1030,7 @@
       <a href="#sponsors">Convened by</a>
       <a href="#schedule">Schedule</a>
       <a href="#attend">Want to Attend?</a>
+      <a href="#lodging">Travel &amp; Lodging</a>
     </nav>
   </div>
 </header>
@@ -1232,6 +1333,143 @@
     </div>
   </section>
 
+  <!-- TRAVEL & LODGING -->
+  <section id="lodging" style="background: var(--parchment-deep); border-bottom: 1px solid var(--hairline);">
+    <div class="wrap">
+      <details class="lodging">
+        <summary>
+          <span>
+            <span class="lodging-title">Travel &amp; Lodging</span>
+            <span class="lodging-sub">Where to stay and how to get here · Dec 3–6, 2026</span>
+          </span>
+          <span class="chev" aria-hidden="true"></span>
+        </summary>
+        <div class="lodging-body">
+          <p>Prices and times are approximate and can change, so check each service before you travel. Yale's <a href="https://your.yale.edu/workplace-services/business-travel/ground/airport-shuttle" target="_blank" rel="noopener">airport travel guide</a> lists more options.</p>
+
+          <h3 class="union-head first"><span class="union-eyebrow">Lodging</span>Where to Stay</h3>
+          <p class="union-lede">Links open with the symposium dates (Dec 3&ndash;6, 2026) filled in where the site allows. Rates tend to rise closer to the event, so we recommend booking early.</p>
+
+          <details class="sub">
+            <summary><span class="sub-title">Apartments &amp; rentals</span><span class="sub-meta">Airbnb, Vrbo, Booking.com</span><span class="chev" aria-hidden="true"></span></summary>
+            <div class="sub-body">
+              <ul class="simple-list">
+                <li><a href="https://www.airbnb.com/s/New-Haven--CT/homes?checkin=2026-12-03&amp;checkout=2026-12-06&amp;adults=1" target="_blank" rel="noopener">Airbnb</a></li>
+                <li><a href="https://www.vrbo.com/search?destination=New%20Haven%2C%20Connecticut&amp;startDate=2026-12-03&amp;endDate=2026-12-06&amp;adults=1" target="_blank" rel="noopener">Vrbo</a></li>
+                <li><a href="https://www.booking.com/searchresults.html?ss=New+Haven%2C+Connecticut&amp;checkin=2026-12-03&amp;checkout=2026-12-06&amp;group_adults=1&amp;no_rooms=1" target="_blank" rel="noopener">Booking.com</a></li>
+              </ul>
+            </div>
+          </details>
+
+          <details class="sub">
+            <summary><span class="sub-title">Hotels near campus</span><span class="sub-meta">6 hotels, walkable or a short ride</span><span class="chev" aria-hidden="true"></span></summary>
+            <div class="sub-body">
+              <ul class="simple-list">
+                <li><a href="https://www.kayak.com/hotels/Cambria-Hotel-New-Haven-University-Area,New-Haven-p57434-h8558627-details/2026-12-03/2026-12-06/1adults" target="_blank" rel="noopener">Cambria Hotel New Haven University Area</a></li>
+                <li><a href="https://www.agoda.com/new-haven-hotel_3/hotel/new-haven-ct-us.html?checkIn=2026-12-03&amp;los=3&amp;rooms=1&amp;adults=1&amp;currencyCode=USD" target="_blank" rel="noopener">New Haven Hotel</a></li>
+                <li><a href="https://www.hilton.com/en/book/reservation/rooms/?ctyhocn=HVNGNGU&amp;arrivalDate=2026-12-03&amp;departureDate=2026-12-06&amp;room1NumAdults=1" target="_blank" rel="noopener">Graduate by Hilton New Haven</a></li>
+                <li><a href="https://www.booking.com/searchresults.html?ss=Omni+New+Haven+Hotel+at+Yale%2C+New+Haven%2C+Connecticut%2C+United+States&amp;checkin=2026-12-03&amp;checkout=2026-12-06&amp;group_adults=1&amp;no_rooms=1&amp;group_children=0&amp;selected_currency=USD" target="_blank" rel="noopener">Omni New Haven Hotel at Yale</a></li>
+                <li><a href="https://be.synxis.com/?adult=1&amp;arrive=2026-12-03&amp;chain=24371&amp;child=0&amp;currency=USD&amp;depart=2026-12-06&amp;hotel=6153&amp;level=hotel&amp;locale=en-US&amp;rooms=1" target="_blank" rel="noopener">The Blake Hotel</a></li>
+                <li><a href="https://www.hilton.com/en/book/reservation/rooms/?ctyhocn=HVNSDUP&amp;arrivalDate=2026-12-03&amp;departureDate=2026-12-06&amp;room1NumAdults=1" target="_blank" rel="noopener">Hotel Marcel New Haven</a></li>
+              </ul>
+            </div>
+          </details>
+
+          <details class="sub">
+            <summary><span class="sub-title">Search more hotels</span><span class="sub-meta">KAYAK, Hotels.com, Google, Expedia</span><span class="chev" aria-hidden="true"></span></summary>
+            <div class="sub-body">
+              <ul class="simple-list">
+                <li><a href="https://www.kayak.com/" target="_blank" rel="noopener">KAYAK</a></li>
+                <li><a href="https://www.hotels.com/" target="_blank" rel="noopener">Hotels.com</a></li>
+                <li><a href="https://www.google.com/travel/hotels" target="_blank" rel="noopener">Google Hotels</a></li>
+                <li><a href="https://www.expedia.com/" target="_blank" rel="noopener">Expedia</a></li>
+              </ul>
+            </div>
+          </details>
+
+          <h3 class="union-head"><span class="union-eyebrow">Getting here</span>To New Haven Union Station</h3>
+          <p class="union-lede">Most train and bus routes end at New Haven Union Station. Choose where you're arriving from.</p>
+
+          <details class="sub">
+            <summary><span class="sub-title">Bradley International Airport (BDL)</span><span class="sub-meta">Closest major airport · about 1 hour</span><span class="chev" aria-hidden="true"></span></summary>
+            <div class="sub-body">
+              <h5>Option 1: Public transit · ~$11 each way, per person</h5>
+              <ul>
+                <li>Travel time: about 1.5&ndash;2.5 hours, depending on connections.</li>
+                <li>Take the <a href="https://www.cttransit.com/services/bradley-flyer" target="_blank" rel="noopener">CTtransit Bradley Flyer (Route 30)</a> from the airport to Hartford Union Station (~$1.75).</li>
+                <li>Take the <a href="https://hartfordline.com/fares-schedules/" target="_blank" rel="noopener">Hartford Line train</a> to New Haven Union Station (~$9.25). The CTtransit New Haven&ndash;Hartford Express bus also runs this leg.</li>
+              </ul>
+              <h5>Option 2: Car service · ~$125&ndash;170 each way, per car</h5>
+              <ul><li>Yale's preferred car services, Serlin and Hy's, go door to door. Book ahead.</li></ul>
+              <h5>Option 3: Uber/Lyft direct · ~$90&ndash;140 each way, per car</h5>
+              <ul><li>Travel time: about 60&ndash;75 minutes. Prices vary with demand and time of day.</li></ul>
+            </div>
+          </details>
+
+          <details class="sub">
+            <summary><span class="sub-title">LaGuardia (LGA)</span><span class="sub-meta">About 2.5&ndash;3.5 hours by transit</span><span class="chev" aria-hidden="true"></span></summary>
+            <div class="sub-body">
+              <h5>Option 1: Public transit · ~$25&ndash;35 each way, per person</h5>
+              <ul>
+                <li>Travel time: about 2.5&ndash;3.5 hours.</li>
+                <li>Take the free <a href="https://www.mta.info/guides/airports/laguardia/lga-to-nyc" target="_blank" rel="noopener">LaGuardia Link Q70 bus</a> from Terminal B or C to Woodside (61 St).</li>
+                <li>Take the LIRR from Woodside to Grand Central (~$5.25 off-peak / ~$7.25 peak).</li>
+                <li>Take <a href="https://www.mta.info/agency/metro-north-railroad" target="_blank" rel="noopener">Metro-North (New Haven Line)</a> from Grand Central to New Haven Union Station (about 2 hours; ~$20 off-peak / ~$27 peak). Buy tickets in the TrainTime app; they cost more onboard.</li>
+              </ul>
+              <h5>Option 2: Shared-ride shuttle · from ~$79 per person</h5>
+              <ul>
+                <li><a href="https://2theairport.com/" target="_blank" rel="noopener">GO Airport Shuttle &ndash; Yale</a> (800-377-8745), a shared door-to-door van. Book ahead.</li>
+                <li>Red Dot Airport Shuttle (800-673-3368), departing from Bridgeport.</li>
+              </ul>
+              <h5>Option 3: Uber/Lyft direct · ~$150&ndash;250+ each way, per car</h5>
+              <ul><li>Travel time: about 1.5&ndash;2.5 hours, depending on traffic.</li></ul>
+            </div>
+          </details>
+
+          <details class="sub">
+            <summary><span class="sub-title">JFK</span><span class="sub-meta">About 3&ndash;3.5 hours by transit</span><span class="chev" aria-hidden="true"></span></summary>
+            <div class="sub-body">
+              <h5>Option 1: Public transit · ~$35&ndash;45 each way, per person</h5>
+              <ul>
+                <li>Travel time: about 3&ndash;3.5 hours.</li>
+                <li>Take the <a href="https://www.mta.info/guides/airports/jfk" target="_blank" rel="noopener">AirTrain</a> to Jamaica Station (~$8.75, paid at the Jamaica exit).</li>
+                <li>Take the LIRR from Jamaica to Grand Central Madison (about 20 minutes; ~$5 off-peak / ~$7 peak).</li>
+                <li>Take Metro-North from Grand Central to New Haven Union Station (about 2 hours; ~$20 off-peak / ~$27 peak).</li>
+              </ul>
+              <h5>Option 2: Shared-ride shuttle · from ~$79 per person</h5>
+              <ul><li><a href="https://2theairport.com/" target="_blank" rel="noopener">GO Airport Shuttle &ndash; Yale</a> (800-377-8745) or Red Dot Airport Shuttle (800-673-3368, from Bridgeport). Book ahead.</li></ul>
+              <h5>Option 3: Uber/Lyft direct · ~$150&ndash;270 each way, per car</h5>
+              <ul><li>Travel time: about 1.5&ndash;2.5 hours, depending on traffic.</li></ul>
+            </div>
+          </details>
+
+          <details class="sub">
+            <summary><span class="sub-title">Newark (EWR)</span><span class="sub-meta">Direct Amtrak train to New Haven</span><span class="chev" aria-hidden="true"></span></summary>
+            <div class="sub-body">
+              <h5>Option 1: Amtrak direct · usually the best choice from Newark</h5>
+              <ul>
+                <li>Take the AirTrain to Newark Airport Rail Station; it is included in your Amtrak ticket.</li>
+                <li>Take an <a href="https://www.amtrak.com/stations/ewr" target="_blank" rel="noopener">Amtrak Northeast Regional</a> train straight to New Haven Union Station (about 2.5 hours; 800-USA-RAIL). Book early for the lowest fares.</li>
+              </ul>
+              <h5>Option 2: Car service</h5>
+              <ul><li><a href="https://2theairport.com/" target="_blank" rel="noopener">GO Airport Shuttle</a> offers private cars to and from EWR (its shared shuttle covers only JFK and LGA).</li></ul>
+              <h5>Option 3: Uber/Lyft direct · ~$200+ each way, per car</h5>
+              <ul><li>Travel time: about 2&ndash;3 hours, depending on traffic. Newark is the farthest of the New York&ndash;area airports.</li></ul>
+            </div>
+          </details>
+
+          <details class="sub">
+            <summary><span class="sub-title">Tweed New Haven (HVN)</span><span class="sub-meta">4 miles from campus</span><span class="chev" aria-hidden="true"></span></summary>
+            <div class="sub-body">
+              <ul><li>Served by Avelo. Take CTtransit bus #206 or a taxi (about 10 minutes). Lyft operates there; Uber does not.</li></ul>
+            </div>
+          </details>
+        </div>
+      
+</details>
+    </div>
+  </section>
+
 </main>
 
 <footer>
@@ -1263,12 +1501,24 @@
     function update() {
       var y = window.scrollY + 140, current = null;
       items.forEach(function (x) { if (x.el.offsetTop <= y) current = x; });
+      if (window.innerHeight + window.scrollY >= document.documentElement.scrollHeight - 4) current = items[items.length - 1];
       links.forEach(function (a) { a.classList.remove('active'); });
       if (current) current.a.classList.add('active');
     }
     window.addEventListener('scroll', update, { passive: true });
     window.addEventListener('resize', update);
     update();
+  })();
+  // Open the Travel & Lodging tab when it is linked to
+  (function () {
+    var box = document.querySelector('details.lodging');
+    if (!box) return;
+    function openIfTarget() { if (location.hash === '#lodging') box.open = true; }
+    document.querySelectorAll('a[href="#lodging"]').forEach(function (a) {
+      a.addEventListener('click', function () { box.open = true; });
+    });
+    window.addEventListener('hashchange', openIfTarget);
+    openIfTarget();
   })();
 </script>
 </body>
