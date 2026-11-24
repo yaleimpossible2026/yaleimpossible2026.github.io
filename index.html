@@ -749,7 +749,8 @@
 
 
   /* ---------- Compact two-day schedule (people-list style) ---------- */
-  .sched-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 0 44px; align-items: start; }
+  .sched-grid { display: grid; grid-template-columns: 1fr; gap: 0; align-items: start; }
+  .sched-grid .sched-day + .sched-day { margin-top: 48px; }
   .sched-grid .sched-day { margin-top: 0; }
   .sched-grid .sched-day-head { padding: 0 0 10px; margin: 0; border-top: none; border-bottom: 2px solid var(--brass); }
   .sched-grid .sched-day-head .day-date { font-size: 1.35rem; }
