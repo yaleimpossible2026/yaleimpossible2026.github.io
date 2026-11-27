@@ -1098,6 +1098,27 @@
   @media (prefers-reduced-motion: reduce) {
     * { transition: none !important; scroll-behavior: auto !important; }
   }
+
+  /* ---------- Poster band ---------- */
+  .poster-band { padding: 72px 0; }
+  .poster-grid { display: grid; grid-template-columns: minmax(0, 380px) minmax(0, 1fr); gap: 64px; align-items: center; }
+  .poster-grid img {
+    display: block; width: 100%; height: auto;
+    box-shadow: 0 24px 50px -20px rgba(0, 0, 0, 0.6);
+    transition: transform .2s ease;
+  }
+  .poster-grid a.poster-link:hover img { transform: translateY(-3px); }
+  .poster-credit { margin: 14px 0 0; font-family: var(--mono); font-size: 11.5px; letter-spacing: 0.06em; text-transform: uppercase; color: #8C94AA; }
+  .poster-copy h2.section-title { margin-bottom: 16px; }
+  .poster-copy p { color: #B9C0D2; max-width: 46ch; margin: 0 0 28px; font-size: 1.05rem; }
+  .poster-copy .btn-light { background: var(--paper-on-midnight); color: var(--midnight); border: 1px solid var(--paper-on-midnight); }
+  .poster-copy .btn-light:hover { background: #fff; transform: translateY(-1px); }
+  .poster-copy .btn-outline-light { background: transparent; color: var(--paper-on-midnight); border: 1px solid rgba(233,228,214,.5); }
+  .poster-copy .btn-outline-light:hover { border-color: var(--brass-bright); color: var(--brass-bright); transform: translateY(-1px); }
+  @media (max-width: 860px) {
+    .poster-grid { grid-template-columns: 1fr; gap: 36px; }
+    .poster-grid .poster-figure { max-width: 340px; }
+  }
 </style>
 </head>
 <body>
@@ -1189,6 +1210,26 @@
         </div>
       </div>
       <p class="section-cta"><a href="#attend">Interested in attending? &rarr;</a></p>
+    </div>
+  </section>
+
+
+  <!-- POSTER -->
+  <section id="poster" class="on-midnight poster-band">
+    <div class="wrap poster-grid">
+      <div class="poster-figure">
+        <a class="poster-link" href="images/tati_poster.jpg" target="_blank" rel="noopener"><img src="images/tati_poster.jpg" alt="Symposium poster: Thinking about the Impossible, a symposium on anomalous experiences, UFOs, miracles, and more. December 4 and 5, 2026. A figure peers through the edge of the sky into a starfield. Lists Yale sponsors and the Society for UAP Studies." width="900" height="1150" loading="lazy"></a>
+        <p class="poster-credit">Poster by Alexander Sushon</p>
+      </div>
+      <div class="poster-copy">
+        <div class="eyebrow">Spread the Word</div>
+        <h2 class="section-title">The poster</h2>
+        <p>Print it, pin it up in your department, or pass it along to anyone who should be in the room. The QR code links straight to registration and details.</p>
+        <div class="hero-actions" style="margin-bottom:0;">
+          <a class="btn btn-light" href="images/tati_poster.pdf" target="_blank" rel="noopener">Download PDF</a>
+          <a class="btn btn-outline-light" href="images/tati_poster.jpg" target="_blank" rel="noopener">View full size</a>
+        </div>
+      </div>
     </div>
   </section>
 
